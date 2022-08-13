@@ -1,0 +1,14 @@
+.c-jsheeps {
+    height: 500px;
+
+    .sheep {
+        background-color: lightgray;
+        height: 100px;
+        width: 200px;
+
+        &-head {
+            border: 1px solid black;
+            width: 50px;
+        }
+    }
+}

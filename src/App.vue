@@ -1,26 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div v-for="component in components" :key="component.name">
+    <component :is="{...component}"/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import bazaar from './components'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+
+  data() {
+      return {
+          components: null
+      }
+  },
+
+  mounted() {
+    this.components = bazaar
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  @import "./App.scss";
 </style>
