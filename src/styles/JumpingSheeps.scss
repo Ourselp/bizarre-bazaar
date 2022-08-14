@@ -106,11 +106,19 @@
             background-color: white;
             z-index: 10;
 
-            &-wools {
+            &-wool {
                 position: absolute;
+                height: 100%;
+                width: 100%;
                 left: -5px;
 
-                &-wool {
+                @for $i from 1 through 12 {
+                    &:nth-child(#{$i}) {
+                        transform: rotate($i * 30 + deg);
+                    }
+                }
+
+                &-hair {
                     position: absolute;
                     width: 42px;
                     height: 32px;
@@ -118,20 +126,24 @@
                     background-color: white;
                     z-index: 11;
 
-                    @for $i from 1 through 3 {
-                        &:nth-child(#{$i}) {
-                            left: if($i == 1, 0, (($i - 1) * 18)) + px;
-                            top: if($i == 2, -5, 8) + px;
-                        }
-                    }
+                    // @for $i from 1 through 3 {
+                    //     &:nth-child(#{$i}) {
+                    //         left: if($i == 1, 0, (($i - 1) * 18)) + px;
+                    //         top: if($i == 2, -5, 8) + px;
+                    //     }
+                    // }
 
-                    @for $i from 1 through 3 {
-                        &:nth-child(#{$i + 3}) {
-                            box-shadow: $wool-shadow;
-                            left: if($i == 5, 0, (($i - 1) * 18)) + px;
-                            top: if($i == 2, 40, 31) + px;
-                            z-index: if($i == 2, 12, 11);
-                        }
+                    // @for $i from 1 through 3 {
+                    //     &:nth-child(#{$i + 3}) {
+                    //         box-shadow: $wool-shadow;
+                    //         left: if($i == 5, 0, (($i - 1) * 18)) + px;
+                    //         top: if($i == 2, 40, 31) + px;
+                    //         z-index: if($i == 2, 12, 11);
+                    //     }
+                    // }
+
+                    &-5, &-6, &-7, &-8, &-9 {
+                        box-shadow: -2px -2px 2px -2px rgba(0, 0, 0, 0.3);
                     }
                 }
             }

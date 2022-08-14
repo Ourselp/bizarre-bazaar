@@ -27,13 +27,12 @@
       </div>
 
       <div class="sheep-body">
-        <div class="sheep-body-wools">
-          <div class="sheep-body-wools-wool" />
-          <div class="sheep-body-wools-wool" />
-          <div class="sheep-body-wools-wool" />
-          <div class="sheep-body-wools-wool" />
-          <div class="sheep-body-wools-wool" />
-          <div class="sheep-body-wools-wool" />
+        <div class="sheep-body-wool" v-for="(wool, index) in wools" :key="wool">
+          <div :class="'sheep-body-wool-hair sheep-body-wool-hair-' + index" />
+        </div>
+
+        <div class="sheep-body-legs">
+          
         </div>
       </div>
 
@@ -47,5 +46,11 @@
 <script>
 export default {
   name: 'JumpingSheeps',
+
+  data() {
+      return {
+          wools: [...Array(12)]
+      }
+  },
 }
 </script>
