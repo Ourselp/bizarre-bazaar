@@ -24,4 +24,9 @@ export default {
 
 <style lang="scss">
   @import "./App.scss";
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
 </style>
