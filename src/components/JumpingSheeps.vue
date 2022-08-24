@@ -1,5 +1,8 @@
 <template>
   <div class="c-jsheeps">
+
+    <div class="sky" />
+    <div class="grass" />
     <div class="animal">
 
       <div class="sheep">

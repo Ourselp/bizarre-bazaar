@@ -2,14 +2,41 @@
     display: flex;
     align-items: flex-end;
     background-color: green;
+    position: relative;
     height: 300px;
     $wool-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
     $wool-reverse-shadow: -2px -2px 2px -2px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: 0;
+    background: url('~@/assets/JumpingSheeps/ground.png');
+
+    .sky {
+        height: 250px;
+        width: 100%;
+        top: 0px;
+        position: absolute;
+        background: url('~@/assets/JumpingSheeps/sky.png');
+        background-size: contain;
+        background-repeat: repeat;
+        background-position: center center;        
+    }
+
+    .grass {
+        height: 150px;
+        width: 100%;
+        bottom: 10px;
+        position: absolute;
+        background: url('~@/assets/JumpingSheeps/grass.png');
+        background-size: contain;
+        background-repeat: repeat;
+        background-position: center center;
+    }
 
     .animal {
         width: 100%;
         position: absolute;
-        animation: slide 12s linear infinite;
+        bottom: 35px;
+        animation: slide 18s linear infinite;
     }
 
     .sheep {
@@ -209,6 +236,17 @@
     }
 }
 
+@keyframes slide {
+    0% {transform: translateX(-5%);}
+    100% {transform: translateX(105%);}
+}
+
+@keyframes jump {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-20px);}
+    100% {transform: translateY(0);}
+}
+
 @keyframes right-ears {
     0% {transform: rotate(48deg);}
     50% {transform: rotate(65deg);}
@@ -230,18 +268,9 @@
 }
 
 @keyframes moving-leg { 
-    0% {transform:rotate(0deg);} 
+    0% {transform:rotate(5deg);}
+    20% {transform:rotate(40deg);} 
     50% {transform:rotate(40deg);} 
-    100% {transform:rotate(0deg);}
-}
-
-@keyframes slide {
-    0% {transform: translateX(-12%);}
-    100% {transform: translateX(112%);}
-}
-
-@keyframes jump {
-    0% {transform: translateY(0);}
-    50% {transform: translateY(-20px);}
-    100% {transform: translateY(0);}
+    95% {transform:rotate(5deg);} 
+    100% {transform:rotate(5deg);}
 }
