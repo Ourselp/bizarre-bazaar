@@ -1,14 +1,310 @@
 .c-jsheeps {
-    height: 500px;
+    display: flex;
+    align-items: flex-end;
+    background-color: green;
+    position: relative;
+    height: 300px;
+    $wool-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+    $wool-reverse-shadow: -2px -2px 2px -2px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: 0;
+    background: url('~@/assets/JumpingSheeps/ground.png');
+
+    .sky {
+        height: 250px;
+        width: 100%;
+        top: 0px;
+        position: absolute;
+        background: url('~@/assets/JumpingSheeps/sky.png');
+        background-size: contain;
+        background-repeat: repeat;
+        background-position: center center;        
+    }
+
+    .grass {
+        height: 150px;
+        width: 100%;
+        bottom: 10px;
+        position: absolute;
+        background: url('~@/assets/JumpingSheeps/grass.png');
+        background-size: contain;
+        background-repeat: repeat;
+        background-position: center center;
+    }
+
+    .animal {
+        width: 100%;
+        position: absolute;
+        bottom: 35px;
+        animation: slide 18s linear infinite;
+    }
 
     .sheep {
-        background-color: lightgray;
+        position: absolute;
         height: 100px;
-        width: 200px;
+        width: 150px;
+        bottom: 0;
+        animation: jump 4s alternate infinite;
 
         &-head {
-            border: 1px solid black;
+            position: absolute;
+            top: 20px;
+            right: 0;
             width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            box-shadow: $wool-shadow;
+            z-index: 20;
+
+            &-wool {
+                position: absolute;
+                width: 18px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: white;
+                box-shadow: $wool-shadow;
+                z-index: 21;
+
+                &:nth-child(1) {
+                    left: 16px;
+                    top: -5px;
+                    z-index: 22;
+                }
+
+                &:nth-child(2) {
+                    left: 32px;
+                }
+            }
+
+            &-ears {
+                position: relative;
+                
+                &-ear {
+                    position: absolute;
+                    width: 30px;
+                    height: 14px;
+                    z-index: 10;
+                    border-radius: 50%;
+                    background-color: black;
+                    box-shadow: $wool-shadow;
+
+                    &:nth-child(1) {
+                        transform: rotate(128deg);
+                        top: 12px;
+                        left: -12px;
+                        animation: left-ears 4s linear infinite;
+                    }
+
+                    &:nth-child(2) {
+                        transform: rotate(48deg);
+                        top: 12px;
+                        right: -12px;
+                        animation: right-ears 4s linear infinite;
+                    }
+                }
+            }
+
+            &-eyes {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+
+                &-eye {
+                    position: relative;
+                    width: 15px;
+                    height: 15px;
+                    border: 1px solid black;
+                    background-color: black;
+                    border-radius: 50%;
+
+                    &-pupil {
+                        position: absolute;
+                        top: 45%;
+                        left: 45%;
+                        width: 5px;
+                        height: 5px;
+                        border-radius: 50%;
+                        background-color: white;
+                    }
+                }
+            }
+
+            &-nose {
+                position: absolute;
+                top: 34px;
+                right: 21px;
+                width: 4px;
+                height: 4px;
+                border-top: 1px solid black;
+                border-right: 1px solid black;
+                transform: rotate(135deg);
+            }
+
+            &-mouth {
+                &-left, &-right {
+                    position: absolute;
+                    top: 36px;
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    border: 1px solid #333;
+                    border-radius: 150px;
+                    border-bottom: 0px solid transparent;
+                    border-right: 0px solid transparent;
+                    transform: rotate(225deg);
+                }
+
+                &-left {
+                    right: 23px;
+                }
+
+                &-right {
+                    right: 13px;
+                }
+            }
+        }
+
+        &-body {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: white;
+            z-index: 10;
+
+            &-wool {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                left: -5px;
+
+                @for $i from 1 through 12 {
+                    &:nth-child(#{$i}) {
+                        transform: rotate($i * 30 + deg);
+                    }
+                }
+
+                &-hair {
+                    position: absolute;
+                    width: 42px;
+                    height: 32px;
+                    border-radius: 50%;
+                    background-color: white;
+                    z-index: 11;
+
+                    &-5, &-6, &-7, &-8, &-9 {
+                        box-shadow: $wool-reverse-shadow;
+                    }
+                }
+            }
+        }
+
+        &-legs {
+            &-leg {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 10px;
+                height: 40px;
+                border-radius: 20px;
+                animation:moving-leg 4s linear infinite;
+
+                &-0 {
+                    right: 49px;
+                    z-index: 1;
+                }
+
+                &-1 {
+                    right: 42px;
+                    z-index: 2;
+                }
+
+                &-2 {
+                    right: 81px;
+                    z-index: 1;
+                }
+
+                &-3 {
+                    right: 74px;
+                    z-index: 2;
+                }
+
+                &-0, &-2 {
+                    background-color: #444;
+                }
+
+                &-1, &-3 {
+                    background-color: black;
+                }
+            }
+        }
+
+        &-tail {
+            position: absolute;
+            left: 33px;
+            top: 44px;
+            animation: wiggle-tails 0.5s linear infinite;
+
+            &-wool {
+                position: absolute;
+                background-color: white;
+                width: 24px;
+                height: 12px;
+                border-radius: 50%;
+                
+                @for $i from 1 through 6 {
+                    &:nth-child(#{$i}) {
+                        transform: rotate($i * 30 + deg);
+                    }
+                }
+
+                &-1, &-2, &-3 {
+                    box-shadow: $wool-reverse-shadow;
+                }
+            }
         }
     }
+}
+
+@keyframes slide {
+    0% {transform: translateX(-10%);}
+    100% {transform: translateX(105%);}
+}
+
+@keyframes jump {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-20px);}
+    100% {transform: translateY(0);}
+}
+
+@keyframes right-ears {
+    0% {transform: rotate(48deg);}
+    50% {transform: rotate(65deg);}
+    100% {transform: rotate(48deg);}    
+}
+
+@keyframes left-ears {
+    0% {transform: rotate(128deg);}
+    50% {transform: rotate(105deg);}
+    100% {transform: rotate(128deg);}    
+}
+
+@keyframes wiggle-tails {
+    0% {transform: rotate(0deg);}
+    20% {transform: rotate(-1deg);}
+    50% {transform: rotate(1deg);}
+    70% {transform: rotate(-1deg);}
+    100% {transform: rotate(0deg);}
+}
+
+@keyframes moving-leg { 
+    0% {transform:rotate(5deg);}
+    20% {transform:rotate(40deg);} 
+    50% {transform:rotate(40deg);} 
+    95% {transform:rotate(5deg);} 
+    100% {transform:rotate(5deg);}
 }
