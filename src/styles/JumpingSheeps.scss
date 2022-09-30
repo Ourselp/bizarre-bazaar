@@ -130,6 +130,40 @@
                     }
                 }
             }
+
+            &-nose {
+                position: absolute;
+                top: 34px;
+                right: 21px;
+                width: 4px;
+                height: 4px;
+                border-top: 1px solid black;
+                border-right: 1px solid black;
+                transform: rotate(135deg);
+            }
+
+            &-mouth {
+                &-left, &-right {
+                    position: absolute;
+                    top: 36px;
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    border: 1px solid #333;
+                    border-radius: 150px;
+                    border-bottom: 0px solid transparent;
+                    border-right: 0px solid transparent;
+                    transform: rotate(225deg);
+                }
+
+                &-left {
+                    right: 23px;
+                }
+
+                &-right {
+                    right: 13px;
+                }
+            }
         }
 
         &-body {

@@ -27,6 +27,13 @@
               </div>
             </div>
           </div>
+
+          <div class="sheep-head-nose" />
+
+          <div class="sheep-head-mouth">
+            <div class="sheep-head-mouth-left" />
+            <div class="sheep-head-mouth-right" />
+          </div>
         </div>
 
         <div class="sheep-body">
